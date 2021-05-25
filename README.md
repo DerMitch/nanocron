@@ -26,6 +26,11 @@ FROM ubuntu:20.04
 COPY --from=nanocron /nanocron /usr/bin/nanocron
 
 # Add whatever you need
+RUN apt-get update \
+ && apt-get install --yes my-backup-tool \
+ && apt-get clean
+
+COPY run_backup.sh /
 
 # Run each day at midnight (UTC only atm)
 CMD ["/usr/bin/nanocron", "0 * * * * *", "/run_backup.sh"]
