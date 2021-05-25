@@ -74,12 +74,14 @@ fn main() {
 ///
 fn run(args: &[String]) -> Result<(), Error> {
     if args.is_empty() {
-        return Err(Error::new("Missing both arguments."));
+        return Err(Error::new(
+            "Missing both required arguments (schedule + command). Use --help to get more information.",
+        ));
     }
 
     if args.len() != 2 {
         return Err(Error::new(
-            "Expecting exactly 2 arguments: The schedule, and the command to execute.",
+            "Expecting exactly 2 arguments: The schedule, and the command to execute. Use --help to get more information.",
         ));
     }
 
