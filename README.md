@@ -9,6 +9,10 @@ A tiny cron-like daemon, which can only run one schedule and only one command.
 
 In my Kubernetes cluster, I use sidecar containers for backups, which is necessary in StatefulSets to directly access the volumes. This tool allows me to schedule jobs to run at a certain time, without have to use weird(er) hacks.
 
+Also it's always a fun exercise to do stuff in Rust :-)
+
+On average, the process needs less than 1 MiB of RAM and practically zero CPU.
+
 
 ## Usage
 
@@ -19,7 +23,7 @@ FROM dermitch/nanocron AS nanocron
 
 FROM ubuntu:20.04
 
-COPY --from=nanocron /usr/bin/nanocron /usr/bin/nanocron
+COPY --from=nanocron /nanocron /usr/bin/nanocron
 
 # Add whatever you need
 
