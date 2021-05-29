@@ -49,7 +49,7 @@ Examples:
 \tnanocron '* * * * * *' '/bin/command-to-run-every-second'
 \tnanocron '0 * * * * *' '/bin/command-to-run-every-minute'
 \tnanocron '0 0 * * * *' '/bin/command-to-run-every-hour'
-\tnanocron '0 0 0 * * *' '/bin/command-to-run-every-day'
+\tnanocron '0 0 3 * * *' '/bin/command-to-run-every-day-at-3-em'
 \tnanocron '0 0 0 1 * *' '/bin/command-to-run-every-first-of-the-month'
 ";
 
@@ -113,6 +113,9 @@ fn run(args: &[String]) -> Result<(), Error> {
     println!("[nanocron] Starting up");
     println!("[nanocron] schedule = {}", expression);
     println!("[nanocron] command  = {}", command);
+
+    let now: DateTime<Utc> = Utc::now();
+    println!("[nanocron] now      = {}", now);
 
     let mut next = match schedule.upcoming(Utc).next() {
         Some(n) => n,
