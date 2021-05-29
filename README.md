@@ -16,7 +16,7 @@ On average, the process needs less than 1 MiB of RAM and practically zero CPU.
 
 ## Usage
 
-The [container available at the Docker Hub]([@todo](https://hub.docker.com/r/dermitch/nanocron)) is kinda useless by itself, it's meant to be used as a base as part of a multi-stage-build:
+The [container available at the Docker Hub](https://hub.docker.com/r/dermitch/nanocron) is kinda useless by itself, it's meant to be used as a base as part of a multi-stage-build:
 
 ```Dockerfile
 FROM dermitch/nanocron AS nanocron
